@@ -30,5 +30,5 @@ This is way faster than pasting in normal mode and paste mode.
 
 You can disable the default mapping ang configure your own:
 
-    let g:paste#no_mappings = 1
+    let g:paste_no_mappings = 1
     nnoremap <shortcut> :Paste<CR>

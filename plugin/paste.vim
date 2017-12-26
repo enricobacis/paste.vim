@@ -23,9 +23,29 @@
 " }}}
 "=============================================================================
 
-command! Paste call paste#Paste()
+function! Paste()
 
-if !exists("g:paste#no_mappings") || ! g:paste#no_mappings
+  if executable("pbpaste")
+    execute "read !pbpaste"
+
+  elseif executable("xclip")
+    execute "read !xclip -selection clipboard -o"
+
+  elseif executable("xsel")
+    execute "read !xsel --clipboard --output"
+
+  else
+    echom "Error: pbpaste, xclip or xsel in path required"
+
+  endif
+
+endfunction
+
+" Configure command and mappings
+
+command! Paste call Paste()
+
+if !exists("g:paste_no_mappings") || ! g:paste_no_mappings
   nnoremap <leader>v :Paste<CR>
 endif
 
