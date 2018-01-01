@@ -2,6 +2,8 @@
 
 Paste from clipboard at full speed using pbpaste, xclip or xsel.
 
+<img src="https://media.giphy.com/media/l0HU2wup2IzxDnUnS/giphy.gif" width="100%">
+
 ## Installation
 
 Use your plugin manager of choice.
