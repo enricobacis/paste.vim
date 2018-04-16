@@ -1,6 +1,6 @@
 # paste.vim
 
-Paste from clipboard at full speed using pbpaste, xclip or xsel.
+Paste (or copy) from clipboard at full speed using pbpaste, xclip or xsel.
 
 <img src="https://media.giphy.com/media/l0HU2wup2IzxDnUnS/giphy.gif" width="100%">
 
@@ -28,9 +28,16 @@ to paste the current content of the clipboard at cursor position.
 
 This is way faster than pasting in normal mode and paste mode.
 
+For symmetry, this plugin also provides the visual mode mapping
+
+    <leader>y
+
+which copies the current selection to the system clipboard.
+
 ## Configuration
 
-You can disable the default mapping ang configure your own:
+You can disable the default mappings and configure your own:
 
     let g:paste_no_mappings = 1
     nnoremap <shortcut> :Paste<CR>
+    vnoremap <shortcut> :Copy<CR>
