@@ -43,12 +43,34 @@ function! Paste()
 
 endfunction
 
+function! Copy() range
+
+  let l:prefix="silent ".a:firstline.",".a:lastline."write !"
+
+  if executable("pbcopy")
+    execute l:prefix."pbcopy"
+
+  elseif executable("xclip")
+    execute l:prefix."xclip -selection clipboard -i"
+
+  elseif executable("xsel")
+    execute l:prefix."xsel --clipboard --input"
+
+  else
+    echom "Error: pbcopy, xclip or xsel in path required"
+
+  endif
+
+endfunction
+
 " Configure command and mappings
 
 command! Paste call Paste()
+command! -range Copy <line1>,<line2>call Copy()
 
 if !exists("g:paste_no_mappings") || ! g:paste_no_mappings
   nnoremap <leader>v :Paste<CR>
+  vnoremap <leader>y :Copy<CR>
 endif
 
 " vim: foldmethod=marker
