@@ -25,14 +25,16 @@
 
 function! Paste()
 
+  let l:prefix="silent read !"
+
   if executable("pbpaste")
-    execute "read !pbpaste"
+    execute l:prefix."pbpaste"
 
   elseif executable("xclip")
-    execute "read !xclip -selection clipboard -o"
+    execute l:prefix."xclip -selection clipboard -o"
 
   elseif executable("xsel")
-    execute "read !xsel --clipboard --output"
+    execute l:prefix."xsel --clipboard --output"
 
   else
     echom "Error: pbpaste, xclip or xsel in path required"
